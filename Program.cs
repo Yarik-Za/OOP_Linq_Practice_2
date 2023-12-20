@@ -204,7 +204,6 @@ namespace Practice_Linq
 
             foreach (var GoldCUPgameJULY2023 in selectedGames)
                 Console.WriteLine($"{GoldCUPgameJULY2023.Date.ToString("d")} {GoldCUPgameJULY2023.Home_team} - {GoldCUPgameJULY2023.Away_team}, Score: {GoldCUPgameJULY2023.Home_score} - {GoldCUPgameJULY2023.Away_score}, Country: {GoldCUPgameJULY2023.Country}");
-
         }
 
     }
