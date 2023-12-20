@@ -55,7 +55,6 @@ namespace Practice_Linq
             // Перевірка
             Console.WriteLine("\n======================== QUERY 1 ========================");
 
-            // див. приклад як має бути виведено:
             foreach (var gameIN2012UK in selectedGames)
                 Console.WriteLine($"{gameIN2012UK.Date.ToString("d")} {gameIN2012UK.Home_team} - {gameIN2012UK.Away_team}, Score: {gameIN2012UK.Home_score} - {gameIN2012UK.Away_score}, Country: {gameIN2012UK.Country}");
         }
@@ -91,15 +90,13 @@ namespace Practice_Linq
         {
             //Query 4: Вивести всі матчі збірної Германії з 2018 року по 2020 рік (включно), в яких вона на виїзді програла.
 
-            var selectedGames = games;   // Корегуємо запит !!!
+            var selectedGames = games.Where(DEgame18_20LOSER => DEgame18_20LOSER.Date.Year >= 2018 && DEgame18_20LOSER.Date.Year <= 2020 && DEgame18_20LOSER.Away_team == "Germany" && DEgame18_20LOSER.Home_score > DEgame18_20LOSER.Away_score);   // Корегуємо запит !!!
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 4 ========================");
-
-            // див. приклад як має бути виведено:
-
-
+            foreach (var DEgame18_20LOSER in selectedGames)
+                Console.WriteLine($"{DEgame18_20LOSER.Date.ToString("d")}, {DEgame18_20LOSER.Home_team} - {DEgame18_20LOSER.Away_team}, Score: {DEgame18_20LOSER.Home_score} - {DEgame18_20LOSER.Away_score}, Country: {DEgame18_20LOSER.Country}");
         }
 
         // Запит 5
