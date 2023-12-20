@@ -122,7 +122,7 @@ namespace Practice_Linq
             //Query 6: Вивести всі матчі останнього чемпіоната світу з футболу (FIFA World Cup), починаючи з чвертьфіналів (тобто останні 8 матчів).
             //Матчі мають відображатися від фіналу до чвертьфіналів (тобто у зворотній послідовності).
 
-            var selectedGames = games.Where(LSTWrldCUP => LSTWrldCUP.Tournament == "FIFA World Cup").OrderByDescending(u => u.Date).Take(8);   // Корегуємо запит !!!
+            var selectedGames = games.Where(LSTWrldCUP => LSTWrldCUP.Tournament == "FIFA World Cup").OrderByDescending(u => u.Date).Take(8); 
 
 
             // Перевірка
@@ -175,12 +175,19 @@ namespace Practice_Linq
             //Query 9: Перетворити всі матчі UEFA Nations League у 2023 році на матчі з наступними властивостями:
             // MatchYear - рік матчу, Game - назви обох команд через дефіс (першою - Home_team), Result - результат для першої команди (Win, Loss, Draw)
 
-            var selectedGames = games;   // Корегуємо запит !!!
+            var selectedGames = games.Where(convertUEFANL2023 => convertUEFANL2023.Tournament == "UEFA Nations League" && convertUEFANL2023.Date.Year == 2023).Select(x => new
+            {
+                MatchYear = x.Date.Year,
+                Game = $"{x.Home_team} - {x.Away_team}",
+                Result = x.Home_score == x.Away_score ? "Draw" : (x.Home_score > x.Away_score ? "Win" : "Loss")
+            });  
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 9 ========================");
 
-            // див. приклад як має бути виведено:
+            foreach (var convertUEFANL2023 in selectedGames)
+                Console.WriteLine($"{convertUEFANL2023.MatchYear} {convertUEFANL2023.Game}, Result for team1: {convertUEFANL2023.Result}");
+            
 
 
         }
