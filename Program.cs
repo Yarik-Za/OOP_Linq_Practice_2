@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Linq;
 
 namespace Practice_Linq
 {
@@ -48,14 +49,16 @@ namespace Practice_Linq
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
 
-            var selectedGames = games; // Корегуємо запит !!!
+            var selectedGames = games.Where(UK=>UK.Country=="Ukraine"&&UK.Date.Year==2012);
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 1 ========================");
 
             // див. приклад як має бути виведено:
-
+            foreach (var gameIN2012UK in selectedGames) {
+                Console.WriteLine($"{gameIN2012UK.Date.ToString("d")} {gameIN2012UK.Home_team} - {gameIN2012UK.Away_team}, Score: {gameIN2012UK.Home_score} - {gameIN2012UK.Away_score}, Country: {gameIN2012UK.Country}");
+            }
 
         }
 
@@ -64,8 +67,7 @@ namespace Practice_Linq
         {
             //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.  
 
-            var selectedGames = games; // Корегуємо запит !!!
-
+            var selectedGames = games;
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 2 ========================");
