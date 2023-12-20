@@ -49,7 +49,7 @@ namespace Practice_Linq
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
 
-            var selectedGames = games.Where(UKgameIN2012=>UKgameIN2012.Country=="Ukraine"&&UKgameIN2012.Date.Year==2012);
+            var selectedGames = games.Where(UKgameIN2012 => UKgameIN2012.Country == "Ukraine" && UKgameIN2012.Date.Year == 2012);
 
 
             // Перевірка
@@ -64,7 +64,7 @@ namespace Practice_Linq
         {
             //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.  
 
-            var selectedGames = games.Where(FrgameIT2020 => FrgameIT2020.Tournament == "Friendly" && FrgameIT2020.Date.Year >= 2020 && (FrgameIT2020.Home_team == "Italy" || FrgameIT2020.Away_team == "Italy")); // Корегуємо запит !!!
+            var selectedGames = games.Where(FrgameIT2020 => FrgameIT2020.Tournament == "Friendly" && FrgameIT2020.Date.Year >= 2020 && (FrgameIT2020.Home_team == "Italy" || FrgameIT2020.Away_team == "Italy")); 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 2 ========================");
 
@@ -77,7 +77,7 @@ namespace Practice_Linq
         {
             //Query 3: Вивести всі домашні матчі збірної Франції за 2021 рік, де вона зіграла у нічию.
 
-            var selectedGames = games.Where(DrawFRgame2021 => DrawFRgame2021.Date.Year == 2021 && DrawFRgame2021.Country == "France" && (DrawFRgame2021.Home_team == "France")&& DrawFRgame2021.Home_score == DrawFRgame2021.Away_score);   // Корегуємо запит !!!
+            var selectedGames = games.Where(DrawFRgame2021 => DrawFRgame2021.Date.Year == 2021 && DrawFRgame2021.Country == "France" && (DrawFRgame2021.Home_team == "France") && DrawFRgame2021.Home_score == DrawFRgame2021.Away_score);   
             // Перевірка
             Console.WriteLine("\n======================== QUERY 3 ========================");
 
@@ -90,7 +90,7 @@ namespace Practice_Linq
         {
             //Query 4: Вивести всі матчі збірної Германії з 2018 року по 2020 рік (включно), в яких вона на виїзді програла.
 
-            var selectedGames = games.Where(DEgame18_20LOSER => DEgame18_20LOSER.Date.Year >= 2018 && DEgame18_20LOSER.Date.Year <= 2020 && DEgame18_20LOSER.Away_team == "Germany" && DEgame18_20LOSER.Home_score > DEgame18_20LOSER.Away_score);   // Корегуємо запит !!!
+            var selectedGames = games.Where(DEgame18_20LOSER => DEgame18_20LOSER.Date.Year >= 2018 && DEgame18_20LOSER.Date.Year <= 2020 && DEgame18_20LOSER.Away_team == "Germany" && DEgame18_20LOSER.Home_score > DEgame18_20LOSER.Away_score);   
 
 
             // Перевірка
@@ -105,14 +105,14 @@ namespace Practice_Linq
             //Query 5: Вивести всі кваліфікаційні матчі (UEFA Euro qualification), які відбулися у Києві чи у Харкові, а також за умови перемоги української збірної.
 
 
-            var selectedGames = games;  // Корегуємо запит !!!
+            var selectedGames = games.Where(UK_Win_Cvalification_UEFA => UK_Win_Cvalification_UEFA.Tournament == "UEFA Euro qualification" && (UK_Win_Cvalification_UEFA.City == "Kyiv" || UK_Win_Cvalification_UEFA.City == "Kharkiv") && UK_Win_Cvalification_UEFA.Home_team == "Ukraine" && UK_Win_Cvalification_UEFA.Home_score > UK_Win_Cvalification_UEFA.Away_score); 
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 5 ========================");
 
-            // див. приклад як має бути виведено:
-
+            foreach (var UK_Win_Cvalification_UEFA in selectedGames)
+                Console.WriteLine($"{UK_Win_Cvalification_UEFA.Date.ToString("d")}, {UK_Win_Cvalification_UEFA.Home_team} - {UK_Win_Cvalification_UEFA.Away_team}, Score: {UK_Win_Cvalification_UEFA.Home_score} - {UK_Win_Cvalification_UEFA.Away_score}, Country: {UK_Win_Cvalification_UEFA.Country}");
 
         }
 
@@ -122,7 +122,7 @@ namespace Practice_Linq
             //Query 6: Вивести всі матчі останнього чемпіоната світу з футболу (FIFA World Cup), починаючи з чвертьфіналів (тобто останні 8 матчів).
             //Матчі мають відображатися від фіналу до чвертьфіналів (тобто у зворотній послідовності).
 
-            var selectedGames = games;   // Корегуємо запит !!!
+            var selectedGames = games;   
 
 
             // Перевірка
