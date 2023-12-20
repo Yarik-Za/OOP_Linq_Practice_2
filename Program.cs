@@ -49,7 +49,7 @@ namespace Practice_Linq
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
 
-            var selectedGames = games.Where(UK=>UK.Country=="Ukraine"&&UK.Date.Year==2012);
+            var selectedGames = games.Where(UKgameIN2012=>UKgameIN2012.Country=="Ukraine"&&UKgameIN2012.Date.Year==2012);
 
 
             // Перевірка
@@ -69,7 +69,6 @@ namespace Practice_Linq
             // Перевірка
             Console.WriteLine("\n======================== QUERY 2 ========================");
 
-            // див. приклад як має бути виведено:
             foreach (var game in selectedGames)
                 Console.WriteLine($"{game.Date.ToString("d")}, {game.Home_team} - {game.Away_team}, Score: {game.Home_score} - {game.Away_score}, Country: {game.Country}");
         }
@@ -79,14 +78,12 @@ namespace Practice_Linq
         {
             //Query 3: Вивести всі домашні матчі збірної Франції за 2021 рік, де вона зіграла у нічию.
 
-            var selectedGames = games;   // Корегуємо запит !!!
-
+            var selectedGames = games.Where(DrawFRgame2021 => DrawFRgame2021.Date.Year == 2021 && DrawFRgame2021.Country == "France" && (DrawFRgame2021.Home_team == "France")&& DrawFRgame2021.Home_score == DrawFRgame2021.Away_score);   // Корегуємо запит !!!
             // Перевірка
             Console.WriteLine("\n======================== QUERY 3 ========================");
 
-            // див. приклад як має бути виведено:
-
-
+            foreach (var DrawFRgame2021 in selectedGames)
+                Console.WriteLine($"{DrawFRgame2021.Date.ToString("d")}, {DrawFRgame2021.Home_team} - {DrawFRgame2021.Away_team}, Score: {DrawFRgame2021.Home_score} - {DrawFRgame2021.Away_score}, Country: {DrawFRgame2021.Country}");
         }
 
         // Запит 4
