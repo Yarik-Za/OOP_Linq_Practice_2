@@ -72,7 +72,7 @@ var selectedGames = games.Where(GoldCUPgameJULY2023 => GoldCUPgameJULY2023.Tourn
 ```
 
 **Код програми**
-[Переглянути код](src/Program.cs)
+[Переглянути код](Program.cs)
 
 **Результат роботи програми**
 Виведення запитів 1-5 на екран
