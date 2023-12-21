@@ -76,10 +76,10 @@ var selectedGames = games.Where(GoldCUPgameJULY2023 => GoldCUPgameJULY2023.Tourn
 
 **Результат роботи програми**
 Виведення запитів 1-5 на екран
-![1-5](https://github.com/Yarik-Za/OOP_Linq_Practice_2/1-5.jpg)
+![1-5](1-5.jpg)
 
 Виведення запитів 6-10 на екран
-![6-10](https://github.com/Yarik-Za/OOP_Linq_Practice_2/6-10.png)
+![6-10](6-10.png)
 
 ### Адреса віддаленого репозиторію 
 https://github.com/Yarik-Za/OOP_Linq_Practice_2
